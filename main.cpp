@@ -1,12 +1,6 @@
-#include <cstdlib>
-#include <stdio.h>
-
+#include <stdlib.h>
 #include "error_processing.h"
-#include "general.h"
 #include "assembler_funcs.h"
-
-
-
 
 int main() {
     asm_err last_err = ASM_ERR_OK;
