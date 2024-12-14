@@ -27,6 +27,7 @@ struct asm_code_t {
     size_t asm_idx = 0;
     size_t code_sz = max_asm_commands_n;
 };
+
 const int DEFAULT_label_VALUE = -1;
 
 struct reg_t
@@ -70,6 +71,7 @@ const reg_t reg_list[] =
     {2, "CX"},
     {3, "DX"},
 };
+
 const size_t reg_list_sz = sizeof(reg_list) / sizeof(const reg_t);
 
 struct arg_t {

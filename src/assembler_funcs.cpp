@@ -111,8 +111,7 @@ bool check_label_elem(const char com[]) {
     return false;
 }
 
-void process_label(asm_data_t *asm_data, asm_err *return_err)
-{
+void process_label(asm_data_t *asm_data, asm_err *return_err) {
     assert(asm_data);
     assert(return_err != NULL);
 
@@ -135,8 +134,7 @@ void process_label(asm_data_t *asm_data, asm_err *return_err)
     }
 }
 
-void write_register(bin_code_t *bin_code, const char register_str[], asm_err *return_err)
-{
+void write_register(bin_code_t *bin_code, const char register_str[], asm_err *return_err) {
     assert(bin_code != NULL);
     assert(register_str != NULL);
 
@@ -287,8 +285,7 @@ bool asm_end_idx(const asm_data_t *asm_data) {
     return asm_data->asm_code.asm_idx >= asm_data->asm_code.code_sz;
 }
 
-void write_jump(asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_err *return_err)
-{
+void write_jump(asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_err *return_err) {
     assert(asm_data);
     assert(return_err);
 
@@ -305,8 +302,7 @@ void write_jump(asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_err 
     process_label(asm_data, return_err);
 }
 
-void write_label(asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_err *return_err)
-{
+void write_label(asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_err *return_err) {
     char label_name[max_label_name_sz] = {};
 
     sscanf(asm_data->asm_code.code[asm_data->asm_code.asm_idx++], "%s", label_name);
@@ -321,22 +317,19 @@ void write_label(asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_err
     asm_data->bin_code.code[asm_data->bin_code.bin_idx++] = LABEL_COM;
 }
 
-void write_conditional_jmp(asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_err *return_err)
-{
+void write_conditional_jmp(asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_err *return_err) {
     asm_data->bin_code.code[asm_data->bin_code.bin_idx++] = com_num;
     asm_data->asm_code.asm_idx++;
 
     process_label(asm_data, return_err);
 }
 
-void write_simple_com(asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_err *return_err)
-{
+void write_simple_com(asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_err *return_err) {
     asm_data->bin_code.code[asm_data->bin_code.bin_idx++] = com_num;
     asm_data->asm_code.asm_idx++;
 }
 
-void write_call_com(asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_err *return_err)
-{
+void write_call_com(asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_err *return_err) {
     asm_data->bin_code.code[asm_data->bin_code.bin_idx++] = CALL_COM;
     asm_data->asm_code.asm_idx++;
 
@@ -373,9 +366,7 @@ void write_call_com(asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_
     // (*bin_idx)++;
 }
 
-
-void asm_com_launch(int asm_com_idx, asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_err *return_err)
-{
+void asm_com_launch(int asm_com_idx, asm_data_t *asm_data, const enum asm_coms_nums com_num, asm_err *return_err) {
     assert(asm_data);
 
     asm_coms_nums asm_com_num = asm_com_list[asm_com_idx].com_num;
@@ -492,10 +483,7 @@ void asm_code_read(asm_code_t *asm_code, const char path[], asm_err *return_err)
     }
 }
 
-
-
-void asm_commands_translate(asm_data_t *asm_data, asm_err *return_err)
-{
+void asm_commands_translate(asm_data_t *asm_data, asm_err *return_err) {
     assert(asm_data);
     assert(return_err != NULL);
 
