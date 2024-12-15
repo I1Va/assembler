@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <stdlib.h>
 #include "error_processing.h"
 #include "assembler_funcs.h"
@@ -16,4 +17,6 @@ int main() {
     asm_commands_translate(&asm_data, &last_err);
 
     bin_code_write("./../bin_code.txt", asm_data.bin_code, &last_err);
+
+    return EXIT_SUCCESS;
 }
